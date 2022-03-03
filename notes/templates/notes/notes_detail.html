@@ -6,6 +6,7 @@
 <div class="border p-3 my-3" style="width: 50%; margin: 0 auto;">
     <h2>{{note.title}}</h2>
     <p>{{note.text}}</p>
+    <a href="{% url 'notes.list' %}" class="btn btn-dark">Back</a>
     <a href="{% url 'notes.update' note.id %}" class="btn btn-primary">Edit</a>
     <a href="{% url 'notes.delete' note.id %}" class="btn btn-danger">Delete</a>
 </div>

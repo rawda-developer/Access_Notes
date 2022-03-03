@@ -1,13 +1,15 @@
 from .forms import NoteCreateForm
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Note
 
-class NoteListView(ListView):
+class NoteListView(LoginRequiredMixin, ListView):
     model = Note
+    login_url = '/admin'
     template_name = 'notes/notes_list.html'
     context_object_name = 'notes'
-class NoteDetailView(DetailView):
+class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Note
     template_name = 'notes/notes_detail.html'
     context_object_name = 'note'

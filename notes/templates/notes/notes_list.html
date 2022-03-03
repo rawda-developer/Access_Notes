@@ -5,7 +5,7 @@
 <div class="row">
 {% for note in notes %}
     <div class="col border p-3 m-1">
-        <a><h3 class="d-flex justify-content-center">{{note.title}}</h3></a>
+        <a href="{% url 'notes.note' note.id %}" class="text-dark text-decoration-none"><h3 class="d-flex justify-content-center">{{note.title}}</h3></a>
         <p class="d-flex justify-content-center">{{ note.text }}</p>
     </div>
  {% endfor %}

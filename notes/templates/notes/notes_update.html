@@ -6,7 +6,9 @@
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Update</button>
+        <a href="{% url 'notes.list' %}" class="btn btn-dark">Back</a>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{% url 'notes.delete' note.id %}" class="btn btn-danger">Delete</a>
     </form>
 </div>
 {% endblock %}

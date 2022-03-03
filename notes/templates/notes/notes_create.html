@@ -7,7 +7,8 @@
 <form method="post">
   {% csrf_token %}
    {{form.as_p}}
-  <button class="btn btn-primary" type="submit" style="width: 100%;">New Note</button>
+  <button class="btn btn-primary" type="submit">New Note</button>
+   <a href="{% url 'notes.list' %}" class="btn btn-dark">Back</a>
 </form>
 </div>
 {% endblock %}
