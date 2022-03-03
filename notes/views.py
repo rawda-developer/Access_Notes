@@ -12,7 +12,7 @@ from django.urls import reverse
 
 class NoteListView(LoginRequiredMixin, ListView):
     model = Note
-    login_url = '/login'
+    login_url = '/login/'
     template_name = 'notes/notes_list.html'
     context_object_name = 'notes'
     
@@ -23,7 +23,7 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Note
     template_name = 'notes/notes_detail.html'
     context_object_name = 'note'
-    login_url = '/admin'
+    login_url = '/login/'
 
     def get_queryset(self):
         return self.request.user.notes.all()
@@ -33,7 +33,7 @@ class NoteCreateView(LoginRequiredMixin, CreateView):
     template_name = 'notes/notes_create.html'
     success_url = '/'
     form_class = NoteCreateForm
-    login_url = '/login'
+    login_url = '/login/'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -47,7 +47,7 @@ class NoteDeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = 'note'
     template_name = 'notes/notes_delete.html'
     success_url = '/'
-    login_url = '/login'
+    login_url = '/login/'
     def get_queryset(self):
         return self.request.user.notes.all()
 
@@ -57,7 +57,7 @@ class NoteUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'notes/notes_update.html'
     success_url = '/'
     form_class = NoteCreateForm
-    login_url = '/login'
+    login_url = '/login/'
     def get_queryset(self):
         return self.request.user.notes.all()
   

@@ -50,3 +50,4 @@ class NoteModelTestCase(TestCase):
         self.user.delete()
         self.note1.delete()
         self.note2.delete()
+
