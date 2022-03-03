@@ -1,0 +1,12 @@
+{% extends 'notes/base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h2 class="d-flex justify-content-center my-3">Login</h2>
+<form method="post" style="width: 50%; margin: 0 auto;">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}

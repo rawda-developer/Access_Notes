@@ -1,7 +1,12 @@
 {% extends 'notes/base.html' %}
 {% block title %}All Notes{% endblock %}
 {% block content %}
+{% if notes %}
 <h2 class="d-flex justify-content-center my-3">All Notes</h2>
+{% else %}
+<h2 class="d-flex justify-content-center my-3">You haven't made any notes</h2>
+
+{% endif %}
 <div class="row">
 {% for note in notes %}
     <div class="col border p-3 m-1">
