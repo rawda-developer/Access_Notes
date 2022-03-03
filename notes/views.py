@@ -1,5 +1,5 @@
 from .forms import NoteCreateForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import Note
 
@@ -7,7 +7,10 @@ class NoteListView(ListView):
     model = Note
     template_name = 'notes/notes_list.html'
     context_object_name = 'notes'
-
+class NoteDetailView(DetailView):
+    model = Note
+    template_name = 'notes/notes_detail.html'
+    context_object_name = 'note'
 class NoteCreateView(CreateView):
     model = Note
     template_name = 'notes/notes_create.html'
