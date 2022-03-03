@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -80,6 +81,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'TEST': {
+            'NAME': 'db_test.sqlite3',
+        }
     }
 }
 
@@ -125,3 +129,16 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
+
+PROJECT_DIR = os.path.dirname(__file__)
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    BASE_DIR / 'static',
+)
