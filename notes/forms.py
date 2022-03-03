@@ -6,3 +6,8 @@ class NoteCreateForm(forms.ModelForm):
     class Meta:
         model = Note
         fields = ['title', 'text']
+
+class NoteUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ['title', 'text']
