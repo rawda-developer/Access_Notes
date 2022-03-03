@@ -20,7 +20,7 @@ class NoteDeleteView(DeleteView):
     context_object_name = 'note'
     template_name = 'notes/notes_delete.html'
     success_url = '/'
-    form_class = NoteCreateForm
+    
 
 class NoteUpdateView(UpdateView):
     model = Note

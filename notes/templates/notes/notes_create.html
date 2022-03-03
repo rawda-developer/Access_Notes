@@ -1,5 +1,13 @@
+{% extends 'notes/base.html' %}
+{% block title %}Create New Note{% endblock %}
+{% block content %}
+
+<h2 class="d-flex justify-content-center my-3">Create New Note</h2>
+<div class="border p-3 my-3" style="width: 50%; margin: 0 auto;">
 <form method="post">
   {% csrf_token %}
    {{form.as_p}}
-  <button type="submit">New Note</button>
+  <button class="btn btn-primary" type="submit" style="width: 100%;">New Note</button>
 </form>
+</div>
+{% endblock %}

@@ -1,5 +1,12 @@
-<form method="post" action="{% url 'notes.update' %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Update</button>
-</form>
+{% extends 'notes/base.html' %}
+{% block title %}Update Note{% endblock %}
+{% block content %}
+<h2 class="d-flex justify-content-center my-3">Update Note</h2>
+<div class="border p-3 my-3" style="width: 50%; margin: 0 auto;">
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Update</button>
+    </form>
+</div>
+{% endblock %}

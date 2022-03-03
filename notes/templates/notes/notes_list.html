@@ -1,5 +1,15 @@
+{% extends 'notes/base.html' %}
+{% block title %}All Notes{% endblock %}
+{% block content %}
+<h2 class="d-flex justify-content-center my-3">All Notes</h2>
+<div class="row">
 {% for note in notes %}
-<h1>{{note.title}}</h1>
-<p>{{ note.text }}</p>
-<hr>
-{% endfor %}
+    <div class="col border p-3 m-1">
+        <a><h3 class="d-flex justify-content-center">{{note.title}}</h3></a>
+        <p class="d-flex justify-content-center">{{ note.text }}</p>
+    </div>
+ {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,7 +1,11 @@
+{% extends 'notes/base.html' %}
+{% block title %}All Notes{% endblock %}
+{% block content %}
 <form method="post">
  {% csrf_token %}
-    <p>Are you sure you want to delete this {{note.title|truncatewords_html:2}}? 
-        This note will be permenantly deleted</p>
-        <button type="submit">Confirm</button>
-        <a href="{% url 'notes.list' %}">Back</a>
+    <p>Are you sure you want to delete this note? 
+        It will be permenantly deleted</p>
+    <button  class="btn btn-danger" type="submit">Confirm</button>
+    <a href="{% url 'notes.list' %}" class="btn btn-secondary">Back</a>
 </form>
+{% endblock %}
