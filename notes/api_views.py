@@ -8,7 +8,7 @@ class NoteCreateAPI(generics.CreateAPIView):
     queryset = Note.objects.all()
 
 
-class NoteRetrieveUpdateDestroyAPI(generics.RetrieveUpdateAPIView):
+class NoteRetrieveUpdateDestroyAPI(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = NoteSerializer
     queryset = Note.objects.all()
     lookup_field = 'id'
