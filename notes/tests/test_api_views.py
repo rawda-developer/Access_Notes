@@ -35,6 +35,34 @@ class NoteCreateTestCase(APITestCase):
         self.user.delete()
 
 
+class NoteUpdateTestCase(APITestCase):
+    def setUp(self):
+        self.user = User.objects.create_superuser(
+            username='admin', password='admin')
+        self.user.save()
+        self.client.login(username='admin',
+                          password='admin')
+        self.note1 = Note.objects.create(
+            title='Note1', text='Hello world', user=self.user)
+        self.note1.save()
+
+    def test_update_note(self):
+        initial_note_count = Note.objects.count()
+        print(initial_note_count)
+        polled_note = Note.objects.first()
+        response = self.client.patch(f'/api/v1/notes/{polled_note.id}/', data={
+            'title': 'Test Note text',
+            'text': 'Test Note text',
+        }, format='json')
+        updated = Note.objects.get(id=polled_note.id)
+        self.assertEqual(updated.title, 'Test Note text')
+
+    def tearDown(self):
+        self.client.logout()
+        self.user.delete()
+        self.note1.delete()
+
+
 class NoteDestroyTestCase(APITestCase):
     def setUp(self):
         self.user = User.objects.create_superuser(
@@ -64,6 +92,7 @@ class NoteDestroyTestCase(APITestCase):
         self.user.delete()
         self.note1.delete()
 
+
 class NoteListTestCase(APITestCase):
     def setUp(self):
         self.user = User.objects.create_superuser(
@@ -80,6 +109,7 @@ class NoteListTestCase(APITestCase):
         response = self.client.get('/api/v1/notes/all/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(Note.objects.count(), initial_note_count)
+
     def tearDown(self):
         self.client.logout()
         self.user.delete()
