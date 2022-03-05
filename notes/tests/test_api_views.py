@@ -63,3 +63,24 @@ class NoteDestroyTestCase(APITestCase):
         self.client.logout()
         self.user.delete()
         self.note1.delete()
+
+class NoteListTestCase(APITestCase):
+    def setUp(self):
+        self.user = User.objects.create_superuser(
+            username='admin', password='admin')
+        self.user.save()
+        self.client.login(username='admin',
+                          password='admin')
+        self.note1 = Note.objects.create(
+            title='Note1', text='Hello world', user=self.user)
+        self.note1.save()
+
+    def test_list_all_notes(self):
+        initial_note_count = Note.objects.count()
+        response = self.client.get('/api/v1/notes/all/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Note.objects.count(), initial_note_count)
+    def tearDown(self):
+        self.client.logout()
+        self.user.delete()
+        self.note1.delete()

@@ -15,4 +15,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name="notes/logout.html"), name='logout'),
     path('api/v1/notes/new/', NoteCreateAPI.as_view()),
     path('api/v1/notes/<int:id>/', NoteRetrieveUpdateDestroyAPI.as_view()),
+    path('api/v1/notes/all/', NoteListAPI.as_view()),
 ]

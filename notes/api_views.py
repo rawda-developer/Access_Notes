@@ -33,3 +33,7 @@ class NoteRetrieveUpdateDestroyAPI(generics.RetrieveUpdateDestroyAPIView):
             })
         return response
 
+
+class NoteListAPI(generics.ListAPIView):
+    serializer_class = NoteSerializer
+    queryset = Note.objects.all()
