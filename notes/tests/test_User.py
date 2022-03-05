@@ -36,13 +36,14 @@ class UserTestCase(TestCase):
         self.client.logout()
         new_user = User.objects.create(
             username='user1', password='user1 password', email='user1@gmail.com')
-        
+
         response = self.client.get(reverse('signup'), data={
             'username': new_user.username,
             'password': new_user.password})
         self.assertEqual(response.status_code, 200)
         polled_user = User.objects.get(id=new_user.id)
         self.assertEqual(polled_user.username, 'user1')
+
     def tearDown(self):
         self.client.logout()
         self.user.delete()
