@@ -64,11 +64,14 @@ Navigate to Admin[http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) or [
 
 ## Verify RESTful API<br>
 
-### View all note<br> [http://127.0.0.1:8000/api/v1/notes/all/](http://127.0.0.1:8000/api/v1/notes/all/) or [http://localhost:8000/api/v1/notes/all/](http://localhost:8000/api/v1/notes/all/)
+### View all note<br> 
+[http://127.0.0.1:8000/api/v1/notes/all/](http://127.0.0.1:8000/api/v1/notes/all/) or [http://localhost:8000/api/v1/notes/all/](http://localhost:8000/api/v1/notes/all/)
 <br>
 
-### Retrieve/Update/Delete a Note<br> [http://127.0.0.1:8000/api/v1/notes/6/](http://127.0.0.1:8000/api/v1/6/) or [http://localhost:8000/api/v1/notes/6/](http://localhost:8000/api/v1/notes/6/)
+### Retrieve/Update/Delete a Note<br> 
+[http://127.0.0.1:8000/api/v1/notes/6/](http://127.0.0.1:8000/api/v1/6/) or [http://localhost:8000/api/v1/notes/6/](http://localhost:8000/api/v1/notes/6/)
 
 <br>
 
-### Create a new Note<br> [http://127.0.0.1:8000/api/v1/notes/new/](http://127.0.0.1:8000/api/v1/new/) or [http://localhost:8000/api/v1/notes/new/](http://localhost:8000/api/v1/notes/new/)
+### Create a new Note<br>
+[http://127.0.0.1:8000/api/v1/notes/new/](http://127.0.0.1:8000/api/v1/new/) or [http://localhost:8000/api/v1/notes/new/](http://localhost:8000/api/v1/notes/new/)
