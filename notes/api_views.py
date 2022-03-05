@@ -9,9 +9,9 @@ class NoteCreateAPI(generics.CreateAPIView):
 
 
 class NoteRetrieveUpdateDestroyAPI(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = NoteSerializer
     queryset = Note.objects.all()
     lookup_field = 'id'
+    serializer_class = NoteSerializer
 
     def delete(self, request, *args, **kwargs):
         note_id = request.data.get('id')
@@ -32,3 +32,4 @@ class NoteRetrieveUpdateDestroyAPI(generics.RetrieveUpdateDestroyAPIView):
                 'user': note['user'],
             })
         return response
+

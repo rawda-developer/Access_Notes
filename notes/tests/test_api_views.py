@@ -5,19 +5,18 @@ from django.contrib.auth.models import User
 
 class NoteCreateTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
-            username='user123', password='password123')
+        self.user = User.objects.create_superuser(
+            username='admin', password='admin')
         self.user.save()
         self.client.login(
-            username='user123', password='password123')
+            username='admin', password='admin')
 
     def test_login_user(self):
         self.assertTrue(self.client.login(
-            username='user123', password='password123'))
+            username='admin', password='admin'))
 
     def test_create_product(self):
         initial_note_count = Note.objects.count()
-        user = {'username': 'user123', 'password': 'password123'}
         note_attrs = {
             'title': 'New Note',
             'text': 'Hello, world',
@@ -32,25 +31,32 @@ class NoteCreateTestCase(APITestCase):
             self.assertEqual(response.data[attr], expected_value)
 
     def tearDown(self):
+        self.client.logout()
         self.user.delete()
 
 
 class NoteDestroyTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
-            username='user123', password='password123')
+        self.user = User.objects.create_superuser(
+            username='admin', password='admin')
         self.user.save()
-        self.client.login(username=self.user.username,
-                          password=self.user.password)
+        self.client.login(username='admin',
+                          password='admin')
         self.note1 = Note.objects.create(
             title='Note1', text='Hello world', user=self.user)
         self.note1.save()
+
+    def test_login_user(self):
+        self.assertTrue(self.client.login(
+            username='admin', password='admin'))
 
     def test_delete_note(self):
         note_id = self.note1.id
         print(note_id)
         initial_note_count = Note.objects.count()
-        self.client.delete(f'/api/v1/notes/{note_id}/')
+        response = self.client.delete(f'/api/v1/notes/{note_id}/')
+        self.assertEqual(response.status_code, 204)
+
         self.assertEqual(Note.objects.count(), initial_note_count - 1)
 
     def tearDown(self):
